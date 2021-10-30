@@ -9,6 +9,9 @@ body {
 }
 
 svg {
-  background-color: black;
-  max-width: min(100%, 4rem)
+  max-width: min(100%, 40rem)
+}
+
+[data-target] {
+  stroke: yellow;
 }

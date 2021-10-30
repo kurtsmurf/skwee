@@ -19,7 +19,10 @@ const main = async () => {
   const callback = () => {
     analyser.getFloatTimeDomainData(samplesHolder)
     console.log(samplesHolder)
-    requestAnimationFrame(callback)
+
+
+
+    // requestAnimationFrame(callback)
   }
 
   requestAnimationFrame(callback)
