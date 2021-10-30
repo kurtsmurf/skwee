@@ -3,6 +3,12 @@
 const audioContext = new AudioContext()
 const analyser = audioContext.createAnalyser()
 
+const draw = samples => {
+  // samples.array.forEach(element => {
+    
+  // });
+}
+
 const main = async () => {
   const streamSource = await navigator.mediaDevices
     .getUserMedia({ audio: true, video: false })
@@ -21,6 +27,8 @@ const main = async () => {
     console.log(samplesHolder)
 
 
+
+    // draw(samplesHolder)
 
     // requestAnimationFrame(callback)
   }
