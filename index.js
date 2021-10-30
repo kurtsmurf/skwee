@@ -12,21 +12,15 @@ const main = async () => {
   streamSource.connect(analyser)
   audioContext.resume()
 
-  const numSamples = 32
+  const numSamples = 128
   analyser.fftSize = numSamples
 
   let samplesHolder = new Float32Array(numSamples)
 
   const callback = () => {
     analyser.getFloatTimeDomainData(samplesHolder)
-    console.log(samplesHolder)
-
-    console.log(toPath(samplesHolder))
     const target = document.querySelector("[data-target]")
     target.setAttribute("d", toPath(samplesHolder))
-
-    console.log(target)
-
     requestAnimationFrame(callback)
   }
 

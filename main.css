@@ -6,10 +6,16 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
+
 }
 
 svg {
+  background-color: black;
   max-width: min(100%, 40rem)
+}
+
+[data-crosshair] {
+  stroke: blue;
 }
 
 [data-target] {
