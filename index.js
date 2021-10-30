@@ -1,17 +1,29 @@
 // @ts-check
 
 const audioContext = new AudioContext()
-
-const loadFile = fileName => fetch(fileName)
-  .then(response => response.arrayBuffer())
-  .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+const analyser = audioContext.createAnalyser()
 
 const main = async () => {
-  const audioBuffer = await loadFile('gtr_ping_hi_1.wav');
+  const streamSource = await navigator.mediaDevices
+    .getUserMedia({ audio: true, video: false })
+    .then(stream => audioContext.createMediaStreamSource(stream))
 
-  console.log(audioBuffer)
+  streamSource.connect(analyser)
+  audioContext.resume()
 
-  
+  const numSamples = 32
+  analyser.fftSize = numSamples
+
+  let samplesHolder = new Float32Array(numSamples)
+
+  const callback = () => {
+    analyser.getFloatTimeDomainData(samplesHolder)
+    console.log(samplesHolder)
+    requestAnimationFrame(callback)
+  }
+
+  requestAnimationFrame(callback)
 }
 
 main()
+
