@@ -2,12 +2,7 @@
 
 const audioContext = new AudioContext()
 const analyser = audioContext.createAnalyser()
-
-const draw = samples => {
-  // samples.array.forEach(element => {
-    
-  // });
-}
+const target = document.querySelector("[data-mode]")
 
 const main = async () => {
   const streamSource = await navigator.mediaDevices
@@ -26,14 +21,34 @@ const main = async () => {
     analyser.getFloatTimeDomainData(samplesHolder)
     console.log(samplesHolder)
 
+    console.log(toPath(samplesHolder))
+    const target = document.querySelector("[data-target]")
+    target.setAttribute("d", toPath(samplesHolder))
 
+    console.log(target)
 
-    // draw(samplesHolder)
-
-    // requestAnimationFrame(callback)
+    requestAnimationFrame(callback)
   }
 
   requestAnimationFrame(callback)
+}
+
+const move = (acc, { time, amplitude }) =>
+  acc + `M ${time}, ${(amplitude + 0.5) * 100} `
+
+const lineTo = (acc, { time, amplitude }) =>
+  acc + `L ${time}, ${(amplitude + 0.5) * 100} `
+
+const toPath = (floats) => {
+  const [first, ...rest] = floats
+
+  let path = move("", { time: 0, amplitude: first })
+
+  rest.forEach((float, index) => {
+    path = lineTo(path, { time: index, amplitude: float})
+  })
+
+  return path
 }
 
 main()
