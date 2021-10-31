@@ -10,7 +10,7 @@ const scopePath = document.querySelector("[scope-path]");
 
 const draw = () => {
   analyser.getFloatTimeDomainData(samplesHolder);
-  scopePath.setAttribute("d", toPath(samplesHolder.slice(-100)));
+  scopePath.setAttribute("d", toPath(samplesHolder));
 };
 
 const loop = () => {
