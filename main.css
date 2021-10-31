@@ -20,4 +20,5 @@ svg {
 
 [data-target] {
   stroke: yellow;
+  fill: transparent
 }
