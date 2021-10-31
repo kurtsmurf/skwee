@@ -5,12 +5,12 @@ const analyser = audioContext.createAnalyser()
 const target = document.querySelector("[data-mode]")
 
 const main = async () => {
-  const streamSource = await navigator.mediaDevices
+  await navigator.mediaDevices
     .getUserMedia({ audio: true, video: false })
     .then(stream => audioContext.createMediaStreamSource(stream))
-
-  streamSource.connect(analyser)
-  audioContext.resume()
+    .then(streamSource => streamSource.connect(analyser))
+    
+    audioContext.resume()
 
   const numSamples = 128
   analyser.fftSize = numSamples
