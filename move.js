@@ -1,5 +1,7 @@
-const move = (acc, { time, amplitude }) => acc + `M ${time}, ${(amplitude + 0.5) * 100} `;
-const lineTo = (acc, { time, amplitude }) => acc + `L ${time}, ${(amplitude + 0.5) * 100} `;
+const move = (acc, { time, amplitude }) =>
+  acc + `M ${time}, ${(amplitude + 0.5) * 100} `;
+const lineTo = (acc, { time, amplitude }) =>
+  acc + `L ${time}, ${(amplitude + 0.5) * 100} `;
 export const toPath = (floats) => {
   const [first, ...rest] = floats;
 
