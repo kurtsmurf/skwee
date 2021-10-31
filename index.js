@@ -1,9 +1,9 @@
 // @ts-check
-import { toPath } from "./move.js";
+import { toPath } from "./path.js";
 
 const audioContext = new AudioContext();
 const analyser = audioContext.createAnalyser();
-const target = document.querySelector("[data-mode]");
+const target = document.querySelector("[scope-mode]");
 analyser.fftSize = 128;
 const samplesHolder = new Float32Array(analyser.fftSize);
 
@@ -11,7 +11,7 @@ document.body.addEventListener("click", () => audioContext.resume());
 
 const loop = () => {
   analyser.getFloatTimeDomainData(samplesHolder);
-  const target = document.querySelector("[data-target]");
+  const target = document.querySelector("[scope-path]");
   target.setAttribute("d", toPath(samplesHolder));
   requestAnimationFrame(loop);
 };

@@ -2,24 +2,34 @@
   margin: 0;
 }
 
+html {
+  --stroke-width: 4;
+  --stroke: black;
+}
+
 body {
   height: 100vh;
   display: grid;
   place-items: center;
+  background-color: orange;
 }
 
 svg {
-  background-color: black;
-  max-width: min(100%, 40rem)
+  background-color: purple;
+  max-width: min( 40rem, 80%);
+  max-height: min( 40rem, 80%);
 }
 
-[data-crosshair] {
-  stroke: blue;
-}
-
-[data-target] {
-  stroke: yellow;
+[scope-border] {
+  stroke: var(--stroke);
   fill: transparent;
-  stroke-width: 4;
+  stroke-width: calc(2 * var(--stroke-width));
+}
+
+[scope-path] {
+  stroke: var(--stroke);
+  fill: transparent;
+  stroke-width: var(--stroke-width);
   stroke-linejoin: round;
+  stroke-linecap: round;
 }
