@@ -9,11 +9,11 @@ const samplesHolder = new Float32Array(analyser.fftSize);
 
 document.body.addEventListener("click", () => audioContext.resume());
 
-const act = () => {
+const loop = () => {
   analyser.getFloatTimeDomainData(samplesHolder);
   const target = document.querySelector("[data-target]");
   target.setAttribute("d", toPath(samplesHolder));
-  requestAnimationFrame(act);
+  requestAnimationFrame(loop);
 };
 
 const main = async () => {
@@ -22,7 +22,7 @@ const main = async () => {
     .then((stream) => audioContext.createMediaStreamSource(stream))
     .then((streamSource) => streamSource.connect(analyser));
 
-  requestAnimationFrame(act);
+  requestAnimationFrame(loop);
 };
 
 main();

@@ -6,7 +6,6 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-
 }
 
 svg {
@@ -20,5 +19,7 @@ svg {
 
 [data-target] {
   stroke: yellow;
-  fill: transparent
+  fill: transparent;
+  stroke-width: 4;
+  stroke-linejoin: round;
 }
