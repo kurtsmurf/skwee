@@ -2,27 +2,24 @@
   margin: 0;
 }
 
-html {
-  --stroke-width: 10;
-  --stroke: url(#g);
-}
-
 body {
   height: 100vh;
   display: grid;
   place-items: center;
-  background: #333;
 }
 
 svg {
-  background-color: inherit;
-  min-width: 100vw;
+  max-width: 100vw;
+  --base-hue: 300;
+  background: hsl(calc(var(--base-hue) + 45), 14%, 14%); 
+  --gradient-color-start: hsl(var(--base-hue), 80%, 40%);
+  --gradient-color-end: hsl(calc(var(--base-hue) + 90), 80%, 40%);
 }
 
 [scope-path] {
-  stroke: var(--stroke);
+  stroke: url(#g);
   fill: transparent;
-  stroke-width: var(--stroke-width);
+  stroke-width: 10;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
