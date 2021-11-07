@@ -27,7 +27,7 @@ const interactive = () => {
   document.body.addEventListener("click", startStop);
 };
 
-let str;
+let str; // Hold a reference to stream source - this seems to keep it active
 navigator.mediaDevices
   .getUserMedia({ audio: true, video: false })
   .then((stream) => audioContext.createMediaStreamSource(stream))
