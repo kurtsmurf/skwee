@@ -37,3 +37,10 @@ navigator.mediaDevices
   })
   .then(loop)
   .then(interactive);
+
+let slider = document.createElement('input')
+slider.type = 'range'
+slider.addEventListener('input', e => {
+    document.body.style.setProperty("--base-hue", e.target.value * 3.6);
+})
+document.body.appendChild(slider)
