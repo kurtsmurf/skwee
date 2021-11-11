@@ -8,3 +8,4 @@
  - enable light mode
  - add transparent background option
  - honor prefers-reduce-motion (with frame-rate cap?)
+ - use splines ?
