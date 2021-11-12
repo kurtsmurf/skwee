@@ -2,6 +2,7 @@
 
 ## todo
  - fix blank start screen
+ - fix y-axis clipping
  - add touch-to-start prompt
  - attach gui base hue control
  - enable vertical mode
