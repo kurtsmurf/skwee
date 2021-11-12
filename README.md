@@ -1,5 +1,7 @@
 ![qr-encoded url to live project](./qr-code.png)
 
+[https://kurtsmurf.github.io/skwee/](https://kurtsmurf.github.io/skwee/)
+
 ## todo
  - fix blank start screen
  - fix y-axis clipping
