@@ -1,6 +1,6 @@
 ![an video of the project in action](./demo.gif)
 
-![qr-encoded url to live project](./qr-code.png)
+![qr-encoded url to live project](./qr-code.svg)
 
 [https://kurtsmurf.github.io/skwee/](https://kurtsmurf.github.io/skwee/)
 
