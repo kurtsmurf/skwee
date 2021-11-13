@@ -18,7 +18,8 @@
         <stop offset="1" stop-color="var(--gradient-color-end)" />
       </linearGradient>
     </defs>
-    <path scope-path d="M 0 64 H 128 64"/>
+    <!-- line must be slightly crooked to avoid gradient rendering bug -->
+    <path scope-path d="M 0 64 L 128 64.0001"/>
   </svg>
 
 </body>
