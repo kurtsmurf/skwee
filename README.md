@@ -6,11 +6,14 @@
 
 ## todo
  - fix blank start screen
+ - use splines
+ - frame rate cap
  - fix y-axis clipping
  - add touch-to-start prompt
  - ~~attach gui base hue control~~
+ - randomise starting base hue
  - enable vertical mode
  - enable light mode
  - add transparent background option
- - honor prefers-reduce-motion (with frame-rate cap?)
- - use splines ?
+ - honor prefers-reduce-motion
+
