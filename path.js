@@ -1,8 +1,6 @@
 // @ts-check
-
 const move = (path, { time, amplitude }) => path + `M ${time}, ${amplitude} `;
 const lineTo = (path, { time, amplitude }) => path + `L ${time}, ${amplitude} `;
-
 const normalize = (float) => (float + 0.5) * 128;
 
 /**
