@@ -1,30 +1,9 @@
 // @ts-check
-import { start } from "./start.js";
+import initialiseDragControl from "./dragStart.js";
+import randomiseHue from "./newFile.js"
+import attachClickToStartHandler from "./svg.js"
 
-document.body.style.setProperty("--base-hue", `${Math.random() * 360}`);
+randomiseHue()
+initialiseDragControl();
+attachClickToStartHandler()
 
-const svg = document.querySelector("svg");
-
-svg.addEventListener("click", function clickHandler() {
-  start();
-  svg.removeEventListener("click", clickHandler);
-});
-
-let dragStart;
-let baseHue;
-
-document.body.onpointerup = document.body.onpointerleave = () =>
-  dragStart = undefined;
-
-document.body.onpointerdown = (e) => {
-  dragStart = e.x;
-  baseHue = parseFloat(document.body.style.getPropertyValue("--base-hue"));
-};
-
-document.body.onpointermove = (e) => {
-  if (!dragStart) return;
-  document.body.style.setProperty(
-    "--base-hue",
-    baseHue + (e.x - dragStart) / 5 % 360,
-  );
-};
