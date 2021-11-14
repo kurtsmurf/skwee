@@ -12,7 +12,7 @@
 - fix y-axis clipping
 - add touch-to-start prompt
 - ~~attach gui base hue control~~
-- randomise starting base hue
+- ~~randomise starting base hue~~
 - enable vertical mode
 - enable light mode
 - add transparent background option
