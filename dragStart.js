@@ -12,7 +12,8 @@ export default () => {
 
   document.body.onpointerdown = (e) => {
     dragStartX = e.x;
-    baseHue = parseFloat(document.body.style.getPropertyValue("--base-hue"));
+    baseHue = document.body.style.getPropertyValue("--base-hue");
+    baseHue = parseFloat(baseHue);
 
     dragStartY = e.y;
     spread = parseFloat(document.body.style.getPropertyValue("--spread"));
@@ -20,17 +21,13 @@ export default () => {
 
   document.body.onpointermove = (e) => {
     if (dragStartX) {
-      document.body.style.setProperty(
-        "--base-hue",
-        baseHue + (e.x - dragStartX) / 5 % 360,
-      );
+      const newBaseHue = baseHue + (e.x - dragStartX) / 5 % 360;
+      document.body.style.setProperty("--base-hue", newBaseHue);
     }
 
     if (dragStartY) {
-      document.body.style.setProperty(
-        "--spread",
-        baseHue + (e.y - dragStartY) % 180,
-      );
+      const newSpread = ((spread + dragStartY + e.y) % 720) - 360
+      document.body.style.setProperty("--spread", newSpread);
     }
   };
 };
