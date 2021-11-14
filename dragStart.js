@@ -1,20 +1,36 @@
 export default () => {
-  let dragStart;
+  let dragStartX;
   let baseHue;
 
-  document.body.onpointerup = document.body.onpointerleave = () =>
-    dragStart = undefined;
+  let dragStartY;
+  let spread;
+
+  document.body.onpointerup = document.body.onpointerleave = () => {
+    dragStartX = undefined;
+    dragStartY = undefined;
+  }
 
   document.body.onpointerdown = (e) => {
-    dragStart = e.x;
+    dragStartX = e.x;
     baseHue = parseFloat(document.body.style.getPropertyValue("--base-hue"));
+
+    dragStartY = e.y;
+    spread = parseFloat(document.body.style.getPropertyValue("--spread"));
   };
 
   document.body.onpointermove = (e) => {
-    if (!dragStart) return;
-    document.body.style.setProperty(
-      "--base-hue",
-      baseHue + (e.x - dragStart) / 5 % 360,
-    );
+    if (dragStartX) {
+      document.body.style.setProperty(
+        "--base-hue",
+        baseHue + (e.x - dragStartX) / 5 % 360,
+      );
+    }
+
+    if (dragStartY) {
+      document.body.style.setProperty(
+        "--spread",
+        baseHue + (e.y - dragStartY) % 180,
+      );
+    }
   };
 };
