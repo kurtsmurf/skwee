@@ -14,7 +14,6 @@ body {
 }
 
 svg {
-  filter: blur(0.05cm);
   max-width: 100%;
   --gradient-hue-start: calc(var(--base-hue) - var(--half-spread));
   --gradient-hue-end: calc(var(--base-hue) + var(--half-spread));
@@ -24,6 +23,7 @@ svg {
 
 [scope-path] {
   stroke: url(#g);
+  filter: url(#f);
   fill: transparent;
   stroke-width: 8;
   stroke-linejoin: round;

@@ -13,13 +13,15 @@
 
   <svg viewbox="-10 -10 148 148">
     <defs>
-      <linearGradient id="g">
+      <linearGradient id="g" gradientUnits="userSpaceOnUse">
         <stop offset="0" stop-color="var(--gradient-color-start)" />
         <stop offset="1" stop-color="var(--gradient-color-end)" />
       </linearGradient>
+      <filter id="f" filterUnits="userSpaceOnUse">
+        <feGaussianBlur stdDeviation="0.5" />
+      </filter>
     </defs>
-    <!-- line must be slightly crooked to avoid gradient rendering bug -->
-    <path scope-path d="M 0 64 L 128 64.0001"/>
+    <path scope-path d="M 0 64 H 128"/>
   </svg>
 
 </body>
