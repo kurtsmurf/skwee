@@ -29,3 +29,19 @@ svg {
   stroke-linejoin: round;
   stroke-linecap: round;
 }
+
+figure {
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000088;
+  position: absolute;
+  display: grid;
+  place-items: center;
+}
+
+figcaption {
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  padding: .5rem;
+}

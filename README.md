@@ -10,7 +10,7 @@
 - use splines
 - frame rate cap
 - fix y-axis clipping
-- add touch-to-start prompt
+- ~~add touch-to-start prompt~~
 - ~~attach gui base hue control~~
 - ~~randomise starting base hue~~
 - enable vertical mode
