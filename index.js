@@ -13,18 +13,18 @@ svg.addEventListener("click", function clickHandler() {
 let dragStart;
 let baseHue;
 
-document.body.onpointerup = document.body.onpointerleave = () =>
-  dragStart = undefined;
+const handlePointerMove = (e) => {
+  const newValue = (baseHue + (e.x - dragStart) / 5) % 360
+  document.body.style.setProperty("--base-hue", newValue.toString());
+};
 
 document.body.onpointerdown = (e) => {
   dragStart = e.x;
   baseHue = parseFloat(document.body.style.getPropertyValue("--base-hue"));
+  document.body.addEventListener("pointermove", handlePointerMove)
 };
 
-document.body.onpointermove = (e) => {
-  if (!dragStart) return;
-  document.body.style.setProperty(
-    "--base-hue",
-    baseHue + (e.x - dragStart) / 5 % 360,
-  );
-};
+document.body.onpointerup = document.body.onpointerleave = () => {
+  dragStart = undefined;
+  document.body.removeEventListener("pointermove", handlePointerMove)
+}
