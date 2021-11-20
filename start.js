@@ -10,18 +10,27 @@ export const start = () => {
   const samplesHolder = new Float32Array(fftSize);
   analyser.fftSize = fftSize;
 
-  const draw = () => {
-    analyser.getFloatTimeDomainData(samplesHolder);
-    scopePath.setAttribute("d", toPath(samplesHolder));
-  };
-  const loop = () => {
+  let paused = false;
+
+  const animate = () => {
+    const draw = () => {
+      if (paused) return
+      analyser.getFloatTimeDomainData(samplesHolder);
+      scopePath.setAttribute("d", toPath(samplesHolder));
+    };
     draw();
-    requestAnimationFrame(loop);
+    requestAnimationFrame(animate);
+  };
+
+  const interactive = () => {
+    const toggle = () => paused = !paused;
+    document.body.addEventListener("keydown", toggle);
   };
 
   navigator.mediaDevices
     .getUserMedia({ audio: true, video: false })
     .then((stream) => audioContext.createMediaStreamSource(stream))
     .then((streamSource) => streamSource.connect(analyser))
-    .then(loop);
+    .then(animate)
+    .then(interactive);
 };

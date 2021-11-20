@@ -24,11 +24,11 @@ const startDrag = (e) => {
   dragStart = e.x;
   baseHue = parseFloat(document.body.style.getPropertyValue("--base-hue"));
   document.body.addEventListener("pointermove", drag);
-}
+};
 const stopDrag = () => {
   dragStart = undefined;
   document.body.removeEventListener("pointermove", drag);
-}
+};
 
 document.body.addEventListener("pointerdown", startDrag);
 document.body.addEventListener("pointerup", stopDrag);
