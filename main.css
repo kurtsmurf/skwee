@@ -7,13 +7,11 @@ body {
   overflow: hidden;
   display: grid;
   place-items: center;
-  --base-hue: 245;
   background: hsl(var(--base-hue), 12%, 12%);
 }
 
 svg {
   max-width: 100%;
-  --spread: 90;
   --half-spread: calc(var(--spread) / 2);
   --gradient-hue-start: calc(var(--base-hue) - var(--half-spread));
   --gradient-hue-end: calc(var(--base-hue) + var(--half-spread));
