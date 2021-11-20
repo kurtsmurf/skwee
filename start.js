@@ -14,7 +14,7 @@ export const start = () => {
 
   const animate = () => {
     const draw = () => {
-      if (paused) return
+      if (paused) return;
       analyser.getFloatTimeDomainData(samplesHolder);
       scopePath.setAttribute("d", toPath(samplesHolder));
     };
@@ -24,7 +24,8 @@ export const start = () => {
 
   const interactive = () => {
     const toggle = () => paused = !paused;
-    document.body.addEventListener("keydown", toggle);
+    const toggleOnSpace = (e) => e.code === "Space" && toggle();
+    document.body.addEventListener("keydown", toggleOnSpace);
   };
 
   navigator.mediaDevices
