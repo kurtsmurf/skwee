@@ -12,12 +12,13 @@ export const start = () => {
 
   let paused = false;
 
+  const draw = () => {
+    if (paused) return;
+    analyser.getFloatTimeDomainData(samplesHolder);
+    scopePath.setAttribute("d", toPath(samplesHolder));
+  };
+  
   const animate = () => {
-    const draw = () => {
-      if (paused) return;
-      analyser.getFloatTimeDomainData(samplesHolder);
-      scopePath.setAttribute("d", toPath(samplesHolder));
-    };
     draw();
     requestAnimationFrame(animate);
   };
