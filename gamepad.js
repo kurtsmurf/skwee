@@ -1,22 +1,12 @@
-const adjustHue = input => {
-    const current = parseFloat(document.body.style.getPropertyValue("--base-hue"));
-    const next = current + input * 4;
-    document.body.style.setProperty("--base-hue", next.toString());
-}
+import { updateBaseHue, updateSpread } from "./updateBaseHue";
 
-const adjustSpread = input => {
-    const current = parseFloat(document.body.style.getPropertyValue("--spread"));
-    const next = current + input * 4;
-    document.body.style.setProperty("--spread", next.toString());
-}
-
-const blah = () => {
+const update = () => {
     const inputX = navigator.getGamepads()[0].axes[0];
     const inputY = navigator.getGamepads()[0].axes[1];
-    adjustHue(inputX);
-    adjustSpread(inputY);
+    updateBaseHue(inputX * 4);
+    updateSpread(inputY * 4);
 }
 
-const run = () => { blah(); requestAnimationFrame(run); }
+const loop = () => { update(); requestAnimationFrame(loop); }
 
-export const watchOutForGamePad = () => window.addEventListener("gamepadconnected", run);
+export const enableGamepadInput = () => window.addEventListener("gamepadconnected", loop);

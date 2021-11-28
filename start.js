@@ -23,7 +23,7 @@ export const start = () => {
     requestAnimationFrame(animate);
   };
 
-  const interactive = () => {
+  const enablePause = () => {
     const toggle = () => paused = !paused;
     const toggleOnSpace = (e) => e.code === "Space" && toggle();
     document.body.addEventListener("keydown", toggleOnSpace);
@@ -34,5 +34,5 @@ export const start = () => {
     .then((stream) => audioContext.createMediaStreamSource(stream))
     .then((streamSource) => streamSource.connect(analyser))
     .then(animate)
-    .then(interactive);
+    .then(enablePause);
 };
