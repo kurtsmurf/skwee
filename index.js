@@ -1,5 +1,8 @@
 // @ts-check
 import { start } from "./start.js";
+import { watchOutForGamePad } from "./gamepad.js"
+
+watchOutForGamePad()
 
 document.body.style.setProperty("--base-hue", `${Math.random() * 360}`);
 document.body.style.setProperty("--spread", `${Math.random() * 720}`);
