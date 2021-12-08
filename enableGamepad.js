@@ -1,3 +1,4 @@
+// @ts-check
 import { updateBaseHue, updateSpread } from "./updateCustomProperty.js";
 
 const update = () => {

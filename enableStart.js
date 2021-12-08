@@ -1,3 +1,4 @@
+// @ts-check
 import { start } from "./start.js";
 
 // Handle touch dismiss prompt

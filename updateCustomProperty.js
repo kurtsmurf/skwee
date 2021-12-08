@@ -1,3 +1,4 @@
+// @ts-check
 export const updateBaseHue = (delta) => {
   const baseHue = parseFloat(document.body.style.getPropertyValue("--base-hue"));
   const newValue = (baseHue + delta) % 360;
