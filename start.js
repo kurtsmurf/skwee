@@ -1,5 +1,6 @@
 // @ts-check
 import { toPath } from "./path.js";
+import { updateBaseHue, updateSpread } from "./updateCustomProperty.js"
 
 export const start = () => {
   const audioContext = new AudioContext();
@@ -12,22 +13,32 @@ export const start = () => {
 
   let paused = false;
 
-  const draw = () => {
+  const enablePause = () => {
+    const toggle = () => paused = !paused;
+    const toggleOnSpace = (e) => e.code === "Space" && toggle();
+    document.body.addEventListener("keydown", toggleOnSpace);
+  };
+
+  const drawPath = () => {
     if (paused) return;
     analyser.getFloatTimeDomainData(samplesHolder);
     scopePath.setAttribute("d", toPath(samplesHolder));
   };
   
   const animate = () => {
-    draw();
+    drawPath();
+
+    updateBaseHue(avg() * 10);
+    updateSpread(avg() * 5)
+
+
+
     requestAnimationFrame(animate);
   };
 
-  const enablePause = () => {
-    const toggle = () => paused = !paused;
-    const toggleOnSpace = (e) => e.code === "Space" && toggle();
-    document.body.addEventListener("keydown", toggleOnSpace);
-  };
+  const avg = () => [...samplesHolder]
+    .map(Math.abs)
+    .reduce((a, b) => a + b, 0) / samplesHolder.length
 
   navigator.mediaDevices
     .getUserMedia({ audio: true, video: false })
@@ -35,4 +46,13 @@ export const start = () => {
     .then((streamSource) => streamSource.connect(analyser))
     .then(animate)
     .then(enablePause);
+
+  const enableFlow = () => {
+    const flow = () => {
+
+    };
+    requestAnimationFrame(flow);
+  }
+
+  enableFlow()
 };
