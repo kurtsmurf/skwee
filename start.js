@@ -26,10 +26,18 @@ export const start = () => {
     analyser.getFloatTimeDomainData(samplesHolder);
     scopePath.setAttribute("d", toPath(samplesHolder));
   };
+
+  let lastAnimationFrameTime = 0;
   const animate = () => {
-    drawPath();
-    updateBaseHue(avg() * 10);
-    updateSpread(avg() * 5);
+    if (!lastAnimationFrameTime) {
+      lastAnimationFrameTime = Date.now()
+    } else if (lastAnimationFrameTime + 16 < Date.now()) {
+      lastAnimationFrameTime = Date.now()
+      drawPath();
+      updateBaseHue(avg() * 10);
+      updateSpread(avg() * 5);
+    }
+
     requestAnimationFrame(animate);
   };
   navigator.mediaDevices
