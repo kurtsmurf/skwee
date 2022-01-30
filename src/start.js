@@ -81,8 +81,15 @@ export const start = () => {
   const analyser = getAnalyzer(audioContext);
   const paused = enablePause();
 
+  let lastFrameTime;
+
   const animate = () => {
-    !paused.value() && tick(analyser);
+    if (!lastFrameTime) {
+      lastFrameTime = Date.now();
+    } else if (lastFrameTime + 16 < Date.now()) {
+      lastFrameTime = Date.now();
+      !paused.value() && tick(analyser);
+    }
     requestAnimationFrame(animate);
   };
 
