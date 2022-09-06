@@ -12,7 +12,7 @@ body {
 
 svg {
   filter: blur(0.2vw);
-  max-width: 100%;
+  width: min(100vw, 100vh);
   --half-spread: calc(var(--spread) / 2);
   --gradient-hue-start: calc(var(--base-hue) - var(--half-spread));
   --gradient-hue-end: calc(var(--base-hue) + var(--half-spread));
