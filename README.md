@@ -4,8 +4,3 @@
 
 [https://kurtsmurf.github.io/skwee/](https://kurtsmurf.github.io/skwee/)
 
-## todo
-
-- frame rate cap
-- vertical mode
-- honor prefers-reduced-motion
